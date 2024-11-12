@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+<style>
+
+   *{
+     font-family:system-ui; 
+     outline:none;
+     user-select: none;
+    }
+    html{
+      max-height: 100vh;
+      max-width: 100vw;
+      overflow: hidden;
+    }
+   body{
+     background-color:#060606;
+     width:100%;
+     height:100%;
+     align-items:center;
+     align-content:center;
+     justify-items:center;
+     justify-content:center;
+     overflow:hidden;
+     padding:0;
+     margin:0;
+     max-height: 100vh;
+   } 
+   .pageTitle{
+     width:100vw;
+     display:flex;
+     padding-left: 10%;
+     padding:3%;
+     background-color: #141414;
+  color:white;
+  align-content: center;
+  align-items: center;
+  gap:6vw;
+  font-size: 4vmin;
+  
+   }
+   .pageTitle img{
+width:10vw;     
+position:relative;
+left:3%;
+   }
+   .welcom{
+     left: 50%;
+     top:50%;
+     position: fixed;
+     width:75vw;
+     height:fit-content;
+    transform: translate(100%, -50%); 
+    color:#D8DEFF;
+    background-color: #141414;
+    display:flex;
+    flex-wrap: wrap;
+    
+    
+    
+    align-items:center;
+     align-content:center;
+     justify-items:center;
+     justify-content:center;
+     overflow: hidden;
+     border-radius:6vmin;
+     border:1px solid #275B4159;
+     transition: all 0.6s ease-in-out;
+   }
+   .welcom.show{
+     transform: translate(-50%, -50%); 
+   }
+   .welcom h2{
+     font-size: 4vmin;
+     text-align: center;
+     margin-bottom: 5vmin;
+   }
+   .welcom p{
+     font-size: 3vmin;
+     color: #AFB3C6;
+   }
+.welcom   input{
+     width:100%;
+     height:6vh;
+     min-height: 12vmin;
+     border:none;
+     left: 0;
+     top:0;
+     background-color: #00000075;
+     font-size: 3vmin;
+     padding-left: 10px;
+     color:#FFFFFF;
+     backdrop-filter: blur(30px);
+     z-index: 9999;
+   }
+   .welcom button{
+     display: flex;
+     font-size: 3vmin;
+     position: relative;
+     width:100%;
+     height:6vh;
+     min-height: 12vmin;
+   background-color: #3D5EF800;
+   border:none;
+   color:white;
+   opacity: 0.1;
+   pointer-events: none;
+   font-weight: 700;
+    z-index: -1;
+    box-shadow: 0px 0px 100px 2px #75E084;
+    align-items:center;
+     align-content:center;
+     justify-items:center;
+     justify-content:center;
+   }
+   .welcom button.on{
+     background-color: #77C381;
+     opacity: 1;
+     pointer-events: all;
+   }
+   .welcom button.on:active{
+     opacity: 0.8;
+   }
+    .welcom button img{
+      width:calc(4vmin);
+      display: none;
+    }
+    .welcom button img.rot {
+  display: block;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.welcom input.hide{
+  
+  display: none;
+}
+.welcom .file{
+  display:none;
+}
+.welcom .file.show{
+  width:100%;
+  height:calc(75vw);
+  aspect-ration:1/1;
+  display: flex;
+  background-color: #37373782;
+  align-items:center;
+            align-content:center;
+            justify-items:center;
+            justify-content:center;
+            border: 2px dashed #F1FFF37A;
+            cursor: pointer;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            font-size:15vmin;
+}
+#bio{
+  width:100%;
+  color:white;
+  font-size: 3vmin;
+  background-color:#00000073;
+  display: none;
+  height:30vh;
+   border:none;  
+     resize: none;
+     padding:3vmin;
+}
+#bio.show{
+  display: flex;
+}
+.welhead{
+  display: flex;
+}
+.welhead button{
+  position:relative;
+  width:6vw;
+  aspect-ratio:1/1;
+  height:calc(6vw);
+  border:1px solid;
+  collr
+}
+</style>
+<body>
+  <div class="pageTitle"><img src="./res/logo.png" alt="./res/logo.png">Dashboard</div>
+  <div class="welcom">
+  
+  <div style="margin:5vmin;">
+    <div class="welhead">
+      <button type="submit"><</button>
+          <h2>Set Your Username</h2>
+          </div>
+    <p>Welcome! To get started, please choose a unique username for your account. This will be visible to other users and help identify your profile.</p>
+    <label for="username"></label>
+    </div>
+    <div class="file">+</div>
+  <textarea id="bio" cols="30" oninput="limitLines(this)"></textarea>
+    <input  type="text" id="username" name="username" placeholder="Enter your desired username">
+    <button type="submit"><div>
+      Next
+    </div><img src="./res/load.png" alt=""></button>
+  
+  </div>
+</body>
+<script>
+  document.querySelector(".welcom input").addEventListener("input", e => {
+  
+  
+ e.target.value.length>3?document.querySelector(".welcom button").classList.add("on"):document.querySelector(".welcom button").classList.remove("on");});
+ 
+  document.querySelector(".welcom button").addEventListener("click", e => {
+  /*  e.target.children[1].classList.add("rot")
+    e.target.children[0].textContent="Updating...";*/
+    
+    const step0=document.querySelector(".welcom .file.show");
+    if(step0!=null){
+      document.querySelector(".welcom").classList.remove("show");
+    setTimeout(()=>{
+      step0.classList.remove("show");
+      document.querySelector(".welcom #bio").classList.add("show");
+   document.querySelector(".welcom h2").textContent= "Set your bio! Share a few words about yourself.";
+      document.querySelector(".welcom").classList.add("show");
+    },600);
+      return}
+    const step1=document.querySelector(".welcom #bio.show");
+    if(step1!=null){return}
+    
+    localStorage.setItem("un",document.querySelector(".welcom input").value);
+    
+    document.querySelector(".welcom").classList.remove("show");
+    
+setTimeout(()=>{
+  document.querySelector(".welcom .file").classList.add("show");
+    document.querySelector(".welcom input").type = "file";
+    document.querySelector(".welcom input").accept = "image/*";
+    document.querySelector(".welcom input").classList.add("hide");
+    document.querySelector(".welcom .file").classList.add("show");
+document.querySelector(".welcom h2").textContent=  "Choose Your Profile Picture";
+document.querySelector(".welcom p").textContent=  "";
+document.querySelector(".welcom").classList.add("show");},600);
+    
+  });
+  
+  document.querySelector(".welcom .file").addEventListener("click", e => {
+    document.querySelector(".welcom input").click();
+  })
+  
+  document.querySelector(".welcom input").addEventListener("change", e => {
+    if (e.target.classList[0] == null) { return; }
+
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            // Create an image element to load the file data
+            const img = new Image();
+            img.src = e.target.result;
+            
+            img.onload = function() {
+                // Set canvas dimensions (adjust width/height to control compression)
+                const canvas = document.createElement("canvas");
+                const maxWidth = 300;  // Set desired max width
+                const maxHeight = 300; // Set desired max height
+                
+                let width = img.width;
+                let height = img.height;
+                
+                // Calculate the new width and height while maintaining the aspect ratio
+                if (width > maxWidth || height > maxHeight) {
+                    if (width > height) {
+                        height = Math.floor((height * maxWidth) / width);
+                        width = maxWidth;
+                    } else {
+                        width = Math.floor((width * maxHeight) / height);
+                        height = maxHeight;
+                    }
+                }
+                
+                canvas.width = width;
+                canvas.height = height;
+
+                // Draw the image onto the canvas
+                const ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0, width, height);
+
+                // Get the compressed base64 string from the canvas
+                const compressedBase64String = canvas.toDataURL("image/jpeg", 0.7); // 0.7 is the quality (0 to 1)
+
+                // Set the background image and clear text content
+                document.querySelector(".welcom .file").textContent = "";
+                document.querySelector(".welcom .file").style.backgroundImage = `url(${compressedBase64String})`;
+                document.querySelector(".welcom .file").style.backgroundSize = "cover";
+                document.querySelector(".welcom .file").style.backgroundPosition = "center";
+
+                // Log or use the compressed base64 string as needed
+                localStorage.setItem("pp",compressedBase64String)
+            };
+        };
+        
+        reader.readAsDataURL(file);
+    }
+});
+  
+  window.addEventListener("load", e => {
+    document.querySelector(".welcom").classList.add("show");
+    /*
+    document.querySelector(".welcom .file").classList.add("show");
+    document.querySelector(".welcom input").type = "file";
+    document.querySelector(".welcom input").accept = "image/*"*/
+  });
+  function updateProfile(){
+    // Define the data
+    const email=localStorage.getItem("email");
+    const emailKey = email.replace('@', '_at_').replace(/\./g, '_dot_');
+    const data = {
+      username: localStorage.getItem("un"),
+      pp: localStorage.getItem("pp"),
+      bio:localStorage.getItem("bio")
+      
+    };
+    
+    // Firebase Realtime Database URL
+    const databaseURL = "https://downloadr-s-default-rtdb.firebaseio.com"; // Replace with your Firebase Database URL
+    
+    // Make the fetch request
+    fetch(`${databaseURL}/${emailKey}.json?auth=${localStorage.getItem("toKey")}`, {
+        method: "PUT", // or "PATCH" to update existing data
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Data added:", data);
+      })
+      .catch(error => {
+        console.error("Error adding data:", error);
+      });
+  }
+  function limitLines(textarea) {
+    const lines = textarea.value;
+    if (lines.length > 120) {
+        textarea.value = lines.slice(0, -1); // Keep only the first 4 lines
+    }
+}
+</script>
+</html>

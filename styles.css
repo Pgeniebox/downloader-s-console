@@ -1,0 +1,287 @@
+   *{
+     font-family:system-ui; 
+     outline:none;
+    }
+   body{
+     background-color:#070707;
+     width:100vw;
+     height:100%;
+     align-items:center;
+     align-content:center;
+     justify-items:center;
+     justify-content:center;
+     overflow:hidden;
+     padding:0;
+     margin:0;
+     min-height:100%;
+   } 
+   .page{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-wrap: wrap;
+  overflow:hidden;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+      .pageTitle{
+     font-size:4vmin;
+     color:white;
+     top:calc(-20%);
+     position:relative;
+     width:75vw;
+    margin-top: 5vh;
+    display:flex;
+    align-items: center;
+    gap:1vw;
+    user-select: none;
+   }
+   .pageTitle img{
+     width:10vw;
+   }
+   .contenair{
+     width:75vw;
+     height:50%;
+     
+     min-height: fit-content;
+     border:1px solid #4B4B4B;
+     border-radius:2vmin;
+     display: flex;
+     flex-wrap: wrap;
+align-items: flex-start;
+align-content: flex-start;
+
+   }
+.contenair >*{
+  margin:5vmin;
+     width:100%;
+     padding: 2vmin;
+     font-size: 3vmin;
+     position: relative;
+     align-content: center;
+     align-items: center;
+     justify-content: center;
+     color:white;
+     border-radius: 1vmin;
+}
+.inp{
+     
+     height:5%;
+     border:1px solid #6060607D;
+     left: 0;
+     top:0;
+     background-color: #000000;
+     
+   }
+   
+.btn{
+  gap:1vw;
+  display: flex;
+     height:5vh;
+     left: 0;
+     top:0;
+     background-color: #646464;
+    user-select: none; 
+     border: none;
+     filter: brightness(0.3);
+     font-size: 4vmin;
+}
+
+.btn.active{
+  filter: brightness(1);
+  background-color: #1A7CFF
+}
+.btn.active:active{
+  filter:brightness(0.6);
+}
+.btn img{
+  display: none;
+  width:5vmin;
+  border-radius: 100%;
+}
+.btn img.rot {
+  display: block;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.contenair.con{
+  pointer-events: none;
+  filter:brightness(0.6);
+}
+.newAcc{
+  margin-top: 0;
+  height:fit-content;
+     left: 0;
+     top:0;
+     justify-items: center;
+     align-items: center;
+     display: flex;
+     color:#FFFFFF;
+     user-select: none;
+     font-size: 3.7vmin;
+}
+.newAcc:active{
+  background-color: #9B9B9B2B;
+}
+.notif{
+  width:100%;
+  color:#48FF3F;
+  top:0vh;
+  position: relative;
+  user-select: none;
+  align-content: center;
+  align-items:center;
+  justify-content: center;
+  justify-items: center;
+  display:flex;
+  flex-wrap: wrap;
+  text-align: center;
+  visibility: hidden;
+  min-height:20vh;
+  font-size: 3vmin;
+  
+}
+.notif.err{
+  color:#FF1717;
+  visibility: visible;
+}
+.notif.succ{
+  color:#48FF3F;
+  visibility: visible;
+}
+.resetPwd{
+  margin-top: 3vh;
+  height:fit-content;
+     left: 0;
+     top:0;
+     justify-items: center;
+     align-items: center;
+     display: flex;
+     color:#1A7CFF;
+     user-select: none;
+     font-size: 3vmin;
+}
+.resetPwd:active{
+  background-color: #9B9B9B2B;
+}
+.rpD {
+  
+  position: fixed; /* Use fixed positioning to keep it relative to the viewport */
+  bottom: 0; /* Start below the viewport */
+  width: 75vw;
+  
+  height: 12vh;
+  min-height: 24vmin;
+  background-color: #121212;
+  left: 50%;
+  transform: translate(-50%, 100%); /* Move it completely off-screen */
+  border-radius: 5vmin;
+  overflow: hidden;
+  display: grid;
+  
+  transition: transform 0.3s ease-in-out; /* Shorter transition for a smoother effect */
+}
+
+.rpD.show:focus-within{
+  transform: translate(-50%, -20%); /* Move ittransform: translate(-50%, 100%); into view */
+}
+.rpD:has(:not(:focus-within)){
+  transform: translate(-50%, 100%);
+}
+
+
+.rpD input{
+  position:relative;
+  background-color:transparent;
+  border: none;
+  padding-left: 20px;
+  height:6vh;
+  min-height: 12vmin;
+  padding-bottom: 6vh;
+  color: white;
+  font-size: 3vmin;
+}
+.rpD button{
+  min-height: 12vmin;
+  position:relative;
+  bottom: calc(6vh);
+  height:6vh;
+  color: white;
+  background-color: transparent;
+  border:none;
+  z-index:9999999;
+  font-size: 3vmin;
+}
+.rpD button:active{
+  background-color: #9B9B9B2B;
+}
+input{
+  outline:none;
+}
+.caD {
+  
+  position: fixed; /* Use fixed positioning to keep it relative to the viewport */
+  bottom: 0; /* Start below the viewport */
+  width: 75vw;
+  height: 18vh;
+  min-height: 36vmin;
+  background-color: #121212;
+  left: 50%;
+  transform: translate(-50%, 100%); /* Move it completely off-screen */
+  border-radius: 5vmin;
+  overflow: hidden;
+  display: grid;
+  
+  transition: transform 0.3s ease-in-out; /* Shorter transition for a smoother effect */
+}
+
+.caD.show:focus-within{
+  transform: translate(-50%, -20%); /* Move ittransform: translate(-50%, 100%); into view */
+}
+.caD:has(:not(:focus-within)){
+  transform: translate(-50%, 100%);
+}
+.caD input{
+  position:relative;
+  background-color:transparent;
+  border: none;
+  padding-left: 20px;
+  height:6vh;
+  min-height: 12vmin;
+  color: white;
+  font-size: 3vmin;
+}
+.caD input.j{
+  padding-bottom: 6vh;
+}
+.caD button{
+  position:relative;
+  bottom: calc(6vh);
+  height:6vh;
+  min-height: 12vmin;
+  color: white;
+  background-color: transparent;
+  border:none;
+  z-index:9999999;
+  font-size: 3vmin;
+  
+  filter: brightness(0.1);
+}
+.caD button:active{
+  background-color: #9B9B9B2B;
+}
+.caD button.on{
+  
+  filter: brightness(1)
+}
